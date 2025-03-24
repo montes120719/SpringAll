@@ -1,0 +1,71 @@
+const { Wallet, Accounts } = require('metamask-sdk');
+
+
+
+
+
+// Set your API key
+
+
+
+const apiKey = process.env.METAMASK_API_KEY;
+
+
+
+
+
+async function createWallets() {
+
+
+
+  const accounts = await Accounts.create();
+
+
+
+  const wallet1Name = 'My First Wallet';
+
+
+
+  const wallet2Name = 'My Second Wallet';
+
+
+
+
+
+  // Create multiple wallets using the API key
+
+
+
+  for (let i = 0; i < 3; i++) {
+
+
+
+    const account = await Accounts.create({ name: wallet1Name + (i === 1 ? '!' : '') });
+
+
+
+    console.log(Created wallet ${i+1} using account ${account.address});
+
+
+
+  }
+
+
+
+
+
+  return accounts;
+
+
+
+}
+
+
+
+
+
+const wallets = createWallets();
+
+
+
+console.log(wallets);
